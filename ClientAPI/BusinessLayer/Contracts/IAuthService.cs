@@ -6,6 +6,11 @@ namespace ClientAPI.BusinessLayer.Contracts
 {
     public interface IAuthService
     {
-          Task<UserDTO> Login (AuthVM auth);
+        /// <summary>
+        /// Async Login for user
+        /// </summary>
+        /// <param name="auth"></param>
+        /// <returns></returns>
+        Task<UserDTO> Login (AuthVM auth);
     }
 }

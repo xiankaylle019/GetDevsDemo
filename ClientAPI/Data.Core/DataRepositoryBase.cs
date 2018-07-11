@@ -58,7 +58,7 @@ namespace ClientAPI.Data.Core
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public Task<IEnumerable<TEntity>> AddEntitiesAsync(IEnumerable<TEntity> entities)
+        public virtual Task<IEnumerable<TEntity>> AddEntitiesAsync(IEnumerable<TEntity> entities)
         {
             if (entities.Count() <= 1)
                 throw new ArgumentOutOfRangeException(nameof(entities));
@@ -140,11 +140,11 @@ namespace ClientAPI.Data.Core
             }
         }
          /// <summary>
-        /// Check if has any data
+        /// Async check if the parameter satisfies any element sequence
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public async Task<bool> AnyEntityAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<bool> AnyEntityAsync(Expression<Func<TEntity, bool>> predicate)
         {
             using (var dbContext = GetDbContextInstance())
             {
@@ -160,7 +160,5 @@ namespace ClientAPI.Data.Core
           
         }
 
-    
-        //  if(await _context.Users.AnyAsync(x=>x.Username == username))
     }
 }

@@ -41,7 +41,7 @@ namespace ClientAPI.Data.Repositories
                 return true;
 
             return false;
-        }
+        }        
         public async Task<bool> UserExist(string username)
         {   
             var result = await AnyEntityAsync(e=>e.Username == username) ? true : false;

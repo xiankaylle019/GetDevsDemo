@@ -26,7 +26,7 @@ namespace BusinessLayer.Services
 
             return result;
         }
-
+        
         public async Task<bool> IsExist(object obj)
         {
             string username = obj.ToString();

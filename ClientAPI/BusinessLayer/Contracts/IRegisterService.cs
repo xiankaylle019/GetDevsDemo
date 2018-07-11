@@ -6,6 +6,11 @@ namespace ClientAPI.BusinessLayer.Contracts
 {
     public interface IRegisterService : IExist
     {
-         Task<bool> Register(UserVM regUser);
+        /// <summary>
+        /// Async register user service
+        /// </summary>
+        /// <param name="regUser"></param>
+        /// <returns></returns>
+        Task<bool> Register(UserVM regUser);
     }
 }
