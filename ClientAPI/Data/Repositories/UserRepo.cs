@@ -12,7 +12,7 @@ namespace ClientAPI.Data.Repositories
            using (var dbContext = GetDbContextInstance())
             {
                 var dbSet = dbContext.Set<User>();
-
+               
                 if (dbSet == null)
                     return null;
 

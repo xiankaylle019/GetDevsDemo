@@ -13,6 +13,12 @@ namespace ClientAPI.Data.Core
     where TEntity : class
     where TContext : DbContext
     {
+        /// <summary>
+        /// Async abstract get entity by id
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         protected abstract Task<TEntity> GetEntityById(TContext context,  int id);
         /// <summary>
         /// Get DbContext instance
@@ -22,7 +28,12 @@ namespace ClientAPI.Data.Core
         {            
             return CreateDbContext(null);
         }
-       
+        /// <summary>
+        /// Async Add entity
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+
         public virtual async Task<TEntity> AddEntityAsync(TEntity entity)
         {
             EntityEntry<TEntity> result;
@@ -42,7 +53,11 @@ namespace ClientAPI.Data.Core
             }
             return result?.Entity;
         }
-
+         /// <summary>
+        /// Add entities
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns></returns>
         public Task<IEnumerable<TEntity>> AddEntitiesAsync(IEnumerable<TEntity> entities)
         {
             if (entities.Count() <= 1)
@@ -50,7 +65,10 @@ namespace ClientAPI.Data.Core
 
             throw new NotImplementedException();
         }
-        
+        /// <summary>
+        /// Async Get list of entities
+        /// </summary>      
+        /// <returns></returns>     
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             using (var dbContext = GetDbContextInstance())
@@ -65,7 +83,11 @@ namespace ClientAPI.Data.Core
                 return result;
             }
         }
-
+        /// <summary>
+        /// Async Get entity by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>       
         public virtual async Task<TEntity> GetByIdAsync(int id)
         {
             using (var dbContext = GetDbContextInstance())
@@ -74,7 +96,11 @@ namespace ClientAPI.Data.Core
             }
         }
 
-
+        /// <summary>
+        /// Async Update entity 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public virtual async Task<TEntity> UpdateEntityAsync(TEntity entity)
         {
             if (entity == null)
@@ -94,7 +120,11 @@ namespace ClientAPI.Data.Core
 
             return result?.Entity;
         }
-
+        /// <summary>
+        /// Search by predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public virtual IEnumerable<TEntity> SearchBy(Func<TEntity, bool> predicate)
         {
             using (var dbContext = GetDbContextInstance())
@@ -109,7 +139,11 @@ namespace ClientAPI.Data.Core
                 return result;
             }
         }
-        
+         /// <summary>
+        /// Check if has any data
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public async Task<bool> AnyEntityAsync(Expression<Func<TEntity, bool>> predicate)
         {
             using (var dbContext = GetDbContextInstance())
