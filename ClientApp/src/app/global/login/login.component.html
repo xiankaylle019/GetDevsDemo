@@ -1,30 +1,31 @@
-
 <div class="content">
 
   <form #loginForm="ngForm" class="form-signin mt-5" (ngSubmit)="logIn()">
-     
-      <div class="form-label-group">
-        <input type="email" #username="ngModel" id="inputEmail" required name="username" [(ngModel)]="model.username" class="form-control form-control-lg" placeholder="Email address" required="" autofocus="">
-        <!-- <label for="inputEmail">Email address</label> -->
-      </div>
-      <br>
-      <div class="form-label-group">
-        <input type="password" #password="ngModel"  id="inputPassword" required name="password" [(ngModel)]="model.password" class="form-control form-control-lg" placeholder="Password" required="">
-        <!-- <label for="inputPassword">Password</label> -->
-      </div>
-  
-      <div class="col-form-label" >
-        <label *ngIf="errMsg.length > 0">
-          {{ errMsg }}
-        </label>
-      </div>
-  
-      <button class="btn btn-lg btn-primary btn-block" [disabled]="!loginForm.valid" type="submit">Sign in</button>
-      <a class="btn btn-link" [routerLink]="['/register']"> Click here to Sign up</a>
-      <p class="mt-3 mb-3 text-muted text-center">Demo Application © 2018  </p>
-    </form>
-  </div>
-  <!-- <pre>
+
+    <div class="form-label-group">
+      <input type="email" #username="ngModel" id="inputEmail" required name="username" [(ngModel)]="model.username" class="form-control form-control-lg"
+        placeholder="Email address" required="" autofocus="">
+      <!-- <label for="inputEmail">Email address</label> -->
+    </div>
+    <br>
+    <div class="form-label-group">
+      <input type="password" #password="ngModel" id="inputPassword" required name="password" [(ngModel)]="model.password" class="form-control form-control-lg"
+        placeholder="Password" required="">
+      <!-- <label for="inputPassword">Password</label> -->
+    </div>
+
+    <div class="col-form-label">
+      <label *ngIf="errMsg.length > 0">
+        {{ errMsg }}
+      </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!loginForm.valid" type="submit">Sign in</button>
+    <a class="btn btn-link" [routerLink]="['/register']"> Click here to Sign up</a>
+    <p class="mt-3 mb-3 text-muted text-center">Demo Application © 2018 </p>
+  </form>
+</div>
+<!-- <pre>
     Form Valid: {{loginForm.valid}}
     Form Touched: {{loginForm.touched}}
     Form Dirty: {{loginForm.dirty}}  
@@ -38,4 +39,3 @@
     Password dirty: {{password.dirty}}
     Password value: {{password.value}}
   </pre> -->
-  

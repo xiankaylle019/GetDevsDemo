@@ -70,12 +70,7 @@ namespace ClientAPI.Data.Core
         {
             using (var dbContext = GetDbContextInstance())
             {
-                return await GetEntityById(dbContext, id);
-                // var dbSet = dbContext.Set<TEntity>();
-                // if (dbSet == null)
-                //     return null;
-
-                // return await dbSet.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
+                return await GetEntityById(dbContext, id);             
             }
         }
 
