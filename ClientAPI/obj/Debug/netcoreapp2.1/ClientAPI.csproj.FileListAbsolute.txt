@@ -1,0 +1,14 @@
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\bin\Debug\netcoreapp2.1\ClientAPI.deps.json
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\bin\Debug\netcoreapp2.1\ClientAPI.runtimeconfig.json
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\bin\Debug\netcoreapp2.1\ClientAPI.runtimeconfig.dev.json
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\bin\Debug\netcoreapp2.1\ClientAPI.dll
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\bin\Debug\netcoreapp2.1\ClientAPI.pdb
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.csprojAssemblyReference.cache
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.csproj.CoreCompileInputs.cache
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.RazorAssemblyInfo.cache
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.RazorAssemblyInfo.cs
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.AssemblyInfoInputs.cache
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.AssemblyInfo.cs
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.RazorTargetAssemblyInfo.cache
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.dll
+C:\Users\user1\Documents\DotNetCore\GetDevDemo\ClientAPI\obj\Debug\netcoreapp2.1\ClientAPI.pdb
