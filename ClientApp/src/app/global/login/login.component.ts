@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../_shared/services/auth.service';
+import { AuthService } from '../../_shared/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,12 +12,10 @@ export class LoginComponent implements OnInit {
   model:any = {};
   errMsg: string = "";
 
-  constructor(private router: Router,private authService: AuthService) { 
-    
-    
-  }
+  constructor(private router: Router,private authService: AuthService) { }
 
   ngOnInit() {
+
   }
 
   logIn(){
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     });
   }
-  
+
   loggedIn(){
     return  this.authService.IsLoggedIn();
   }

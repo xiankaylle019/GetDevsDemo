@@ -27,7 +27,7 @@ namespace ClientAPI.Controllers
             _config = config;
         }
         
- 
+        [AllowAnonymous]
         [HttpPost ("login")]
         public async Task<IActionResult> Login ([FromBody] AuthVM authVM) 
         {

@@ -12,7 +12,7 @@ namespace ClientAPI.Data.Shared.ViewModels
         public string Username { get; set; }        
 
         [Required]
-        [StringLength(8, MinimumLength = 4, ErrorMessage= "You must specify a password between 4 to 8 characters" )]
+        [StringLength(50, MinimumLength = 4, ErrorMessage= "You must specify a password with a minimum of 4 characters" )]
         public string Password { get; set; }
 
         [Required]

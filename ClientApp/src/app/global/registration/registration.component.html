@@ -47,13 +47,13 @@
 
     <br>
     <div class="form-label-group">
-      <input type="text" #lastsname="ngModel" id="inputLastName" required name="lastsname" [(ngModel)]="model.lastsname" class="form-control form-control-lg"
+      <input type="text" #lastname="ngModel" id="inputLastName" required name="lastname" [(ngModel)]="model.lastname" class="form-control form-control-lg"
         placeholder="Last Name" required="" minlength="2">
-        <div *ngIf="lastsname.invalid && (lastsname.dirty || lastsname.touched)" class="alert alert-danger">
-            <div *ngIf="regForm.controls['lastsname'].errors.required">
+        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+            <div *ngIf="regForm.controls['lastname'].errors.required">
                 Last Name is required.
               </div>
-              <div *ngIf="regForm.controls['lastsname'].errors.minlength">
+              <div *ngIf="regForm.controls['lastname'].errors.minlength">
                   Last Name must be at least 2 characters long.
               </div>           
         </div>

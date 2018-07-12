@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using ClientAPI.BusinessLayer.Contracts;
 using ClientAPI.Data.Shared.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ namespace ClientAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAll")]
     public class RegisterServiceController : ControllerBase
     {
         private readonly IServiceProvider _service;
@@ -17,7 +19,7 @@ namespace ClientAPI.Controllers
         {
            _service = service;
         }
-        
+
         [AllowAnonymous]
         [HttpPost ("register")]
         public async Task<IActionResult> Register ([FromBody] UserVM regUserVM) {
