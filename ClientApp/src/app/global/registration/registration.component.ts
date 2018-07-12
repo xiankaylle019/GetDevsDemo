@@ -1,8 +1,11 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 import { RegisterService } from './../../_shared/services/registration/register.service';
-import { NgForm } from '@angular/forms'
+
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -24,7 +27,7 @@ export class RegistrationComponent implements OnInit {
       this.regService.register(this.model).subscribe(response => {
 
         console.log(response);
-        
+
         if(response){
           this.regForm.reset();
         }

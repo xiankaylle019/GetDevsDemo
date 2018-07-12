@@ -18,6 +18,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegistrationComponent
+  },  
+  {
+    path: 'home',
+    // canActivate: [AuthGuardService],
+    loadChildren: './../core/core.module#CoreModule'
   },
   {
     path: '**',
