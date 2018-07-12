@@ -72,6 +72,7 @@ namespace ClientAPI.Data.Repositories
             }
 
         }
+       
         protected override async Task<User> GetEntityById(DataContext context, int id)
         {
              var dbSet = context.Set<User>();

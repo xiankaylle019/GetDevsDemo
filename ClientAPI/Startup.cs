@@ -39,7 +39,16 @@ namespace ClientAPI
             
             services.AddDataLayerServices();
            
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", p =>
+                {
+                    p.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
+                });
             
              services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer (options => {
@@ -60,16 +69,20 @@ namespace ClientAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
                 app.UseHsts();
             }
             AutoMapperConfig.Execute();
-            app.UseCors (c => c.AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowAnyOrigin()
-            .AllowCredentials());
+
+          
+
+            app.UseAuthentication();
+
+            app.UseCors ("AllowAll");
+
             // app.UseHttpsRedirection();
             app.UseMvc();
         }

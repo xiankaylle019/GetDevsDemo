@@ -1,6 +1,7 @@
 
 using BusinessLayer.Services;
 using ClientAPI.BusinessLayer.Contracts;
+using ClientAPI.BusinessLayer.Services;
 using ClientAPI.Data.Contracts;
 using ClientAPI.Data.Repositories;
 using Data;
@@ -16,6 +17,8 @@ namespace ServiceCollectionLayer
             
             services.AddTransient<IRegisterService, RegisterService>();
 
+            services.AddTransient<IAuthService, AuthService>();
+            
             return services;
         }
 

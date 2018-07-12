@@ -2,17 +2,33 @@
 
   <form #loginForm="ngForm" class="form-signin mt-5" (ngSubmit)="logIn()">
 
-    <div class="form-label-group">
-      <input type="email" #username="ngModel" id="inputEmail" required name="username" [(ngModel)]="model.username" class="form-control form-control-lg"
-        placeholder="Email address" required="" autofocus="">
-      <!-- <label for="inputEmail">Email address</label> -->
-    </div>
-    <br>
-    <div class="form-label-group">
-      <input type="password" #password="ngModel" id="inputPassword" required name="password" [(ngModel)]="model.password" class="form-control form-control-lg"
-        placeholder="Password" required="">
-      <!-- <label for="inputPassword">Password</label> -->
-    </div>
+      <div class="form-label-group">
+          <input type="email" #username="ngModel" id="inputEmail" required name="username" [(ngModel)]="model.username" class="form-control form-control-lg"
+            placeholder="Email address" required="" autofocus="" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+    
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                <div *ngIf="loginForm.controls['username'].errors.required">
+                   Email is required.
+                </div>    
+                <div  *ngIf="loginForm.controls['username'].errors.pattern">
+                    Email is invalid
+                </div>       
+            </div> 
+       
+        </div>
+    
+        <br>
+        <div class="form-label-group">
+          <input type="password" #password="ngModel" id="inputPassword" required name="password" [(ngModel)]="model.password" class="form-control form-control-lg"
+            placeholder="Password" required="">
+    
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="loginForm.controls['password'].errors.required">
+                    Password is required.
+                </div>           
+            </div> 
+    
+        </div>
 
     <div class="col-form-label">
       <label *ngIf="errMsg.length > 0">

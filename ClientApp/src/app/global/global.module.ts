@@ -4,7 +4,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { GlobalRoutingModule } from './global-routing.module';
+
+import { AuthService } from '../_shared/services/auth.service';
+
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -22,6 +26,9 @@ import { RegistrationComponent } from './registration/registration.component';
     LoginComponent, 
     NotFoundComponent,
     RegistrationComponent],
+  providers:[
+      AuthService
+  ],
   exports:[
     RouterModule,
     FormsModule,

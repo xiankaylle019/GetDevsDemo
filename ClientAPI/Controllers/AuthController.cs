@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ClientAPI.BusinessLayer.Contracts;
 using ClientAPI.Data.Shared.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace ClientAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAll")]
     public class AuthController : ControllerBase
     {
          private readonly IServiceProvider _service;
@@ -25,7 +27,7 @@ namespace ClientAPI.Controllers
             _config = config;
         }
         
-        [AllowAnonymous]
+ 
         [HttpPost ("login")]
         public async Task<IActionResult> Login ([FromBody] AuthVM authVM) 
         {
@@ -55,7 +57,7 @@ namespace ClientAPI.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
-            return Ok(new { tokenString });
+            return Ok(new { token = tokenString ,username = auth.Username });
         }
     }
 }

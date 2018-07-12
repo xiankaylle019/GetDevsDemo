@@ -33,7 +33,6 @@ namespace ClientAPI.Data.Core
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-
         public virtual async Task<TEntity> AddEntityAsync(TEntity entity)
         {
             EntityEntry<TEntity> result;
