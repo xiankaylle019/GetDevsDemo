@@ -6,6 +6,7 @@ import { CoreRoutingModule } from './core-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ForumsComponent } from './forums/forums.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { ForumsComponent } from './forums/forums.component';
   declarations: [
     HomeComponent, 
     NavigationComponent, 
-    ForumsComponent
+    ForumsComponent, ProfileComponent
   ]
 })
 export class CoreModule { }

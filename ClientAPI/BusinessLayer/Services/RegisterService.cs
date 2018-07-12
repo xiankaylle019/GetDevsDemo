@@ -6,6 +6,7 @@ using ClientAPI.Data.Contracts;
 using ClientAPI.Data.Shared.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using ClientAPI.Models;
+using ClientAPI.Data.Shared.DTOs;
 
 namespace BusinessLayer.Services
 {
@@ -16,7 +17,7 @@ namespace BusinessLayer.Services
         {
             _service = service;
         }
-        public async Task<bool> Register(UserVM regUser)
+        public async Task<UserDTO> Register(UserVM regUser)
         {
             var userRepo = _service.GetService<IUserRepo>();
 
@@ -24,7 +25,9 @@ namespace BusinessLayer.Services
 
             var result = await userRepo.Register(user,regUser.Password);
 
-            return result;
+            var userDTO = Mapper.Map<UserDTO>(result);
+            
+            return userDTO;
         }
         
         public async Task<bool> IsExist(object obj)

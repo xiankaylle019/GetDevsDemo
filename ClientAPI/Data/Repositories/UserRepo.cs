@@ -28,7 +28,7 @@ namespace ClientAPI.Data.Repositories
             }
           
         }
-        public async Task<bool> Register(User user, string password)
+        public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
 
@@ -36,11 +36,11 @@ namespace ClientAPI.Data.Repositories
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;        
+            var newUser = await AddEntityAsync(user);
+            if(newUser != null)
+                return newUser;
 
-            if(await AddEntityAsync(user) != null)
-                return true;
-
-            return false;
+            return null;
         }        
         public async Task<bool> UserExist(string username)
         {   

@@ -20,7 +20,7 @@ const routes: Routes = [
     component: RegistrationComponent
   },  
   {
-    path: 'home',
+    path: 'account',
     // canActivate: [AuthGuardService],
     loadChildren: './../core/core.module#CoreModule'
   },

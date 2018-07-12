@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using ClientAPI.Data.Shared.Contracts;
+using ClientAPI.Data.Shared.DTOs;
 using ClientAPI.Data.Shared.ViewModels;
 
 namespace ClientAPI.BusinessLayer.Contracts
@@ -11,6 +12,6 @@ namespace ClientAPI.BusinessLayer.Contracts
         /// </summary>
         /// <param name="regUser"></param>
         /// <returns></returns>
-        Task<bool> Register(UserVM regUser);
+        Task<UserDTO> Register(UserVM regUser);
     }
 }

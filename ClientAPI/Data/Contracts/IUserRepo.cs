@@ -19,7 +19,7 @@ namespace ClientAPI.Data.Contracts
         /// <param name="user"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        Task<bool> Register(User user, string password);
+        Task<User> Register(User user, string password);
         /// <summary>
         /// Validates if user is already exist.
         /// </summary>

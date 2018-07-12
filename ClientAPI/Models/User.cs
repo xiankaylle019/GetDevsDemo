@@ -8,7 +8,7 @@ namespace ClientAPI.Models
         public User()
         {
             Forums = new Collection<Forums>();
-            
+
             Posts = new Collection<Posts>();
         }
         public int UserId { get; set; }
@@ -17,6 +17,7 @@ namespace ClientAPI.Models
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual ICollection<Forums> Forums { get; set; }
         public virtual ICollection<Posts> Posts { get; set; }
     }
