@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
+  model:any = {};
+  errMsg: string = "";
   constructor() { }
 
   ngOnInit() {
   }
+  register(){
 
+  }
 }
