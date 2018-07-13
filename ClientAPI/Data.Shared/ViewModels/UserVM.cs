@@ -22,5 +22,7 @@ namespace ClientAPI.Data.Shared.ViewModels
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Last Name minimum length is 2")]
         public string LastName { get; set; }
+
+        internal string IdentityId { get; set; }
     }
 }

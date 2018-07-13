@@ -28,6 +28,7 @@ namespace ClientAPI.Controllers
         private readonly IServiceProvider _service;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        
         public AuthController(IServiceProvider service, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
         {
             _service = service;
@@ -54,7 +55,7 @@ namespace ClientAPI.Controllers
 
                 var user = _userManager.Users.SingleOrDefault(r => r.Email == authVM.Username);
 
-                var tokenString = new JWTGenerateToken().GenerateJwtToken(auth.Username,auth.UserId, user,_configuration);
+                var tokenString = new JWTGenerateToken().GenerateJwtToken(auth.Username,auth.UserId , auth,_configuration);
                 
                 return Ok(new { token = tokenString ,username = authVM.Username });
             }

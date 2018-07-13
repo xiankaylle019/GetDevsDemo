@@ -122,6 +122,8 @@ namespace ClientAPI.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<string>("IdentityId");
+
                     b.Property<bool>("IsDeleted");
 
                     b.Property<string>("LastName");

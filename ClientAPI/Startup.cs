@@ -40,7 +40,7 @@ namespace ClientAPI
         {
            
           
-            var key = System.Text.Encoding.ASCII.GetBytes (Configuration.GetSection ("AppSettings:Token").Value);
+            var key = System.Text.Encoding.ASCII.GetBytes (Configuration.GetSection ("Jwt:Key").Value);
 
             services.AddDbContext<DataContext> (db => db.UseSqlServer(Configuration.GetConnectionString ("DefaultConnection")));
             
@@ -55,16 +55,38 @@ namespace ClientAPI
                 }
             ).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
+             services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer (options => {
+                    
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
 
-            services.AddBusinessLayerServices();
-            
-            services.AddDataLayerServices();
+                    options.TokenValidationParameters = new TokenValidationParameters {         
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey (key),                  
+                    ValidIssuer = Configuration["Jwt:JwtIssuer"],
+                    ValidAudience = Configuration["Jwt:JwtIssuer"],                
+                              
+
+                };
+            });
            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiPolicy", policy =>
+                {
+                    policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+                    policy.RequireAuthenticatedUser();
+                });
+            });
             
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-              services.AddCors(options =>
+            services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", p =>
                 {
@@ -75,26 +97,17 @@ namespace ClientAPI
                     });
                 });
             
-             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer (options => {
-                    options.Audience = "http://localhost:5001/";
-                    options.Authority = "http://localhost:5000/";
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters {                   
-                    IssuerSigningKey = new SymmetricSecurityKey (key),
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = false,
-                    ValidateAudience = false
+             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-                };
-            });
+            services.AddBusinessLayerServices();
+            
+            services.AddDataLayerServices(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-            JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -105,11 +118,11 @@ namespace ClientAPI
                 app.UseHsts();
             }
             AutoMapperConfig.Execute();
-
+           
             app.UseCors("AllowAll");
-
+            app.UseStaticFiles();
             app.UseAuthentication();
-            // app.UseStaticFiles();
+           
             // app.UseHttpsRedirection();
             app.UseMvc();
         }

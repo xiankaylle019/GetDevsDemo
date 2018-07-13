@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClientAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180712124804_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20180713060159_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,6 +123,8 @@ namespace ClientAPI.Migrations
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<string>("FirstName");
+
+                    b.Property<string>("IdentityId");
 
                     b.Property<bool>("IsDeleted");
 

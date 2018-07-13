@@ -63,10 +63,12 @@ namespace ClientAPI.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-             
+
+                regUserVM.IdentityId = user.Id;
+
                 var newUser = await regService.Register(regUserVM);
 
-                var tokenString = new JWTGenerateToken().GenerateJwtToken(regUserVM.Username,newUser.UserId, user,_configuration);
+                var tokenString = new JWTGenerateToken().GenerateJwtToken(regUserVM.Username,newUser.UserId, newUser,_configuration);
 
                 return Ok(new { token = tokenString ,username = regUserVM.Username });
 

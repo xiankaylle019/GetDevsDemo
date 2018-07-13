@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ClientAPI.Data.Shared.DTOs;
 using ClientAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
@@ -31,7 +32,7 @@ namespace ClientAPI.Controllers
         public async Task<IActionResult> GetUserProfile () {
                       
             var user = await GetCurrentUserAsync();
-            
+        
             return Ok(user);
         }
     }

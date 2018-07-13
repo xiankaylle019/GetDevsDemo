@@ -12,6 +12,7 @@ namespace ClientAPI.Models
             Posts = new Collection<Posts>();
         }
         public int UserId { get; set; }
+        public string IdentityId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
